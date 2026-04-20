@@ -2,56 +2,159 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Vantix Solutions | Inovação Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantix Solutions | Digital Innovation</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #F4F7F6; color: #2C3E50; }
-        header { background: #FFFFFF; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #2ECC71; }
-        .hero { text-align: center; padding: 100px 10%; background: linear-gradient(135deg, #2ECC71 0%, #27ae60 100%); color: white; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 50px 10%; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border: 1px solid #2ECC71; }
-        .btn { background: #2ECC71; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        footer { background: #2C3E50; color: white; text-align: center; padding: 40px; margin-top: 50px; }
-        .contact-info { margin: 10px 0; font-size: 0.9em; }
+        :root {
+            --primary: #2ECC71;
+            --dark: #0f172a;
+            --gray: #1e293b;
+            --text: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(46, 204, 113, 0.15) 0%, transparent 70%);
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .services {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            padding: 50px 10%;
+            background: #070b14;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 style="color: #2ECC71; margin:0;">Vantix</h1>
-    <nav>
-        <strong>@vantix_solutions</strong>
-    </nav>
+    <div class="logo">VANTIX</div>
+    <div style="font-size: 0.9rem; color: #94a3b8;">@vantix_solutions</div>
 </header>
 
 <section class="hero">
-    <h2>Transformamos sua presença digital</h2>
-    <p>Sites, Automação e Design de alto impacto.</p>
-    <br>
-    <a href="https://wa.me/5511913306933" class="btn" style="background: white; color: #27ae60;">Falar no WhatsApp</a>
+    <h1>Transformamos sua presença digital</h1>
+    <p>Sites de alta performance, Bots inteligentes e design audiovisual de elite para o seu negócio.</p>
+    <a href="https://wa.me/5511913306933" class="btn">INICIAR PROJETO</a>
 </section>
 
 <section class="services">
     <div class="card">
         <h3>Criação de Sites</h3>
-        <p>Landing pages e sistemas robustos e responsivos.</p>
+        <p>Desenvolvimento de Landing Pages e sistemas web com design exclusivo e foco em conversão.</p>
     </div>
     <div class="card">
         <h3>Bots de WhatsApp</h3>
-        <p>Automação inteligente para o seu atendimento 24h.</p>
+        <p>Automação completa para atendimento ao cliente e vendas 24 horas por dia.</p>
     </div>
     <div class="card">
-        <h3>Edição de Vídeo/Foto</h3>
-        <p>Conteúdo visual profissional para suas redes sociais.</p>
+        <h3>Edição & Design</h3>
+        <p>Vídeos e artes profissionais que elevam o patamar da sua marca nas redes sociais.</p>
     </div>
 </section>
 
 <footer>
-    <p><strong>Vantix Solutions</strong></p>
-    <div class="contact-info">
-        Email: novaesdanniel0802@gmail.com <br>
-        Tel: +55 11 91330-6933
-    </div>
+    <p>&copy; 2026 Vantix Solutions</p>
+    <a href="mailto:novaesdanniel0802@gmail.com" class="contact-link">novaesdanniel0802@gmail.com</a>
+    <p>Tel: +55 11 91330-6933</p>
 </footer>
 
 </body>
