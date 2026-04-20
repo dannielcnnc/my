@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vantix Solutions | Inovação Digital</title>
+    <title>Vantix Solutions | Digital Authority</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,152 +12,199 @@
     <style>
         :root {
             --primary: #2ECC71;
-            --bg: #07090d;
-            --bg-card: #11141b;
+            --primary-glow: rgba(46, 204, 113, 0.4);
+            --bg: #030508;
+            --card: rgba(255, 255, 255, 0.03);
             --text: #ffffff;
             --text-dim: #94a3b8;
-            --header-bg: rgba(7, 9, 13, 0.8);
+            --border: rgba(255, 255, 255, 0.08);
+            --cursor: var(--primary);
         }
 
         [data-theme="light"] {
             --bg: #f8fafc;
-            --bg-card: #ffffff;
+            --card: rgba(255, 255, 255, 0.9);
             --text: #0f172a;
             --text-dim: #475569;
-            --header-bg: rgba(248, 250, 252, 0.8);
+            --border: rgba(0, 0, 0, 0.08);
+            --cursor: #0f172a;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.3s, color 0.3s; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; cursor: none; }
+        
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; transition: background 0.5s ease; }
 
+        /* Custom Cursor */
+        #cursor {
+            position: fixed; width: 20px; height: 20px; background: var(--cursor); border-radius: 50%;
+            pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: difference;
+        }
+
+        /* Neon Background */
+        .glow {
+            position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            z-index: -1; filter: blur(100px); pointer-events: none; opacity: 0.5;
+        }
+
+        /* Navbar */
         header {
-            width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center;
-            position: fixed; top: 0; background: var(--header-bg); backdrop-filter: blur(15px); z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            width: 100%; padding: 25px 8%; display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; z-index: 1000; transition: 0.4s;
         }
+        header.scrolled { background: rgba(0,0,0,0.2); backdrop-filter: blur(20px); padding: 15px 8%; border-bottom: 1px solid var(--border); }
 
-        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+        .logo { font-weight: 800; font-size: 1.8rem; color: var(--primary); letter-spacing: -1px; }
 
-        .theme-toggle {
-            cursor: pointer; padding: 10px; border-radius: 50%; background: var(--bg-card);
-            border: 1px solid var(--primary); color: var(--primary);
+        /* Hero */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 8%; }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 800; line-height: 0.9; margin-bottom: 30px; letter-spacing: -4px; }
+        .hero h1 span { color: var(--primary); text-shadow: 0 0 30px var(--primary-glow); }
+        .hero p { font-size: 1.3rem; color: var(--text-dim); max-width: 800px; margin-bottom: 40px; }
+
+        /* Buttons */
+        .btn-elite {
+            background: var(--primary); color: #000; padding: 20px 45px; border-radius: 14px;
+            text-decoration: none; font-weight: 800; font-size: 1.1rem; transition: 0.4s;
+            box-shadow: 0 10px 40px var(--primary-glow); border: none;
         }
+        .btn-elite:hover { transform: translateY(-5px); box-shadow: 0 15px 60px var(--primary-glow); }
 
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 5%; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover; background-position: center; color: white !important;
-        }
-
-        .hero h1 { font-size: clamp(2.2rem, 8vw, 4rem); font-weight: 800; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 30px; opacity: 0.9; }
-
-        .btn {
-            background: var(--primary); color: #000; padding: 15px 35px; border-radius: 10px;
-            text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s;
-        }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4); }
-
-        .section { padding: 100px 8%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-
+        /* Grid Services */
+        .services { padding: 100px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card {
-            background: var(--bg-card); border-radius: 20px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);
+            background: var(--card); backdrop-filter: blur(20px); border: 1px solid var(--border);
+            padding: 50px; border-radius: 40px; transition: 0.5s;
         }
-        .card img { width: 100%; height: 200px; object-fit: cover; }
-        .card-content { padding: 30px; }
-        .card h3 { margin-bottom: 10px; color: var(--primary); }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px) scale(1.02); }
+        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 25px; }
 
-        .faq { max-width: 800px; margin: 0 auto; text-align: left; }
-        .faq-item { background: var(--bg-card); padding: 20px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; }
+        /* FAQ Section */
+        .faq { padding: 100px 8%; max-width: 1000px; margin: 0 auto; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 15px; overflow: hidden; }
+        .faq-header { padding: 25px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
+        .faq-body { padding: 0 25px 25px; color: var(--text-dim); display: none; line-height: 1.6; }
 
-        footer { padding: 50px 8%; background: var(--bg-card); text-align: center; border-top: 1px solid var(--primary); }
+        /* WhatsApp Floating */
+        .wa-float {
+            position: fixed; bottom: 40px; right: 40px; width: 65px; height: 65px; background: #25d366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; color: white; z-index: 1000; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite; text-decoration: none;
+        }
 
-        /* Ajustes Mobile */
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        /* Mobile Adjusts */
         @media (max-width: 768px) {
-            header { padding: 15px 5%; }
-            .hero { height: 90vh; }
+            * { cursor: auto !important; }
+            #cursor { display: none; }
+            .hero h1 { font-size: 3.5rem; }
+            header { padding: 20px 5%; }
         }
     </style>
 </head>
 <body>
 
-<header>
+<div id="cursor"></div>
+<div class="glow" style="top: -10%; right: -5%;"></div>
+<div class="glow" style="bottom: -10%; left: -5%;"></div>
+
+<header id="navbar">
     <div class="logo">VANTIX</div>
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-        <a href="https://wa.me/5511913306933" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">CONTATO</a>
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <button onclick="toggleTheme()" style="background:none; border:none; color:var(--text); font-size: 1.2rem; margin-right: 15px;">
+            <i class="fas fa-adjust"></i>
+        </button>
+        <a href="https://wa.me/5511913306933" class="btn-elite" style="padding: 10px 25px; font-size: 0.9rem;">ORÇAMENTO</a>
     </div>
 </header>
 
 <section class="hero">
-    <h1 data-aos="fade-up">Inteligência que Transforma.</h1>
-    <p data-aos="fade-up" data-aos-delay="200">A agência boutique que escala o seu faturamento através de tecnologia, automação e design de alto impacto.</p>
-    <a href="#servicos" class="btn" data-aos="zoom-in">Explorar Serviços</a>
+    <h1 data-aos="fade-up">Seu Futuro é <span>Digital.</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200">Landing Pages de alto padrão, Automações com IA e Design cinematográfico para marcas que não aceitam o comum.</p>
+    <a href="#servicos" class="btn-elite" data-aos="zoom-in" data-aos-delay="400">VER PROJETOS</a>
 </section>
 
-<section class="section" id="servicos">
-    <h2 data-aos="fade-right">O que entregamos</h2>
-    <div class="grid">
-        <div class="card" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Web Design">
-            <div class="card-content">
-                <h3>Web Design Premium</h3>
-                <p>Sites que carregam em menos de 2 segundos e vendem enquanto você dorme.</p>
-            </div>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=800" alt="Bot">
-            <div class="card-content">
-                <h3>Bots de Atendimento</h3>
-                <p>IA integrada ao seu WhatsApp para triagem e vendas automáticas.</p>
-            </div>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="400">
-            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="Agência">
-            <div class="card-content">
-                <h3>Gestão & Criativos</h3>
-                <p>Sua marca com visual de empresa gigante no mercado digital.</p>
-            </div>
-        </div>
+<section class="services" id="servicos">
+    <div class="card" data-aos="fade-up">
+        <i class="fas fa-rocket"></i>
+        <h3>Web Design</h3>
+        <p>Interfaces disruptivas focadas na jornada do usuário e na explosão de vendas.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-brain"></i>
+        <h3>Bots de IA</h3>
+        <p>Integração de inteligência artificial para atendimento automático e triagem de leads.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <i class="fas fa-play-circle"></i>
+        <h3>Audiovisual</h3>
+        <p>Edição de vídeo cinematográfica que retém a atenção e converte desejo em compra.</p>
     </div>
 </section>
 
-<section class="section" style="background: rgba(46, 204, 113, 0.05);">
-    <h2>Dúvidas Frequentes</h2>
-    <div class="faq" style="margin-top: 40px;">
-        <div class="faq-item" onclick="this.style.background = '#2ECC71'; this.style.color = '#000'">
-            <strong>Vocês atendem em todo o Brasil?</strong>
-            <p style="margin-top: 10px;">Sim, nossa operação é 100% remota com foco em resultados globais.</p>
-        </div>
-        <div class="faq-item" onclick="this.style.background = '#2ECC71'; this.style.color = '#000'">
-            <strong>Qual o investimento inicial?</strong>
-            <p style="margin-top: 10px;">Projetos personalizados sob consulta. Fale conosco no WhatsApp!</p>
-        </div>
+<section class="faq">
+    <h2 style="font-size: 2.5rem; margin-bottom: 40px; text-align: center;">Perguntas Frequentes</h2>
+    <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">Como funciona a entrega? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-body">Trabalhamos com sprints ágeis. Você acompanha cada etapa do design à programação em tempo real.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">O bot funciona no meu nicho? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-body">Sim. Configuramos o fluxo de conversa de acordo com o seu produto, seja serviço, infoproduto ou e-commerce.</div>
     </div>
 </section>
 
 <footer>
-    <p>Vantix Solutions &copy; 2026 | @vantix_solutions</p>
-    <p>São Paulo, Brasil</p>
+    <div style="padding: 60px 8%; border-top: 1px solid var(--border); text-align: center;">
+        <div class="logo">VANTIX</div>
+        <p style="color: var(--text-dim); margin-top: 20px;">@vantix_solutions | novaesdanniel0802@gmail.com</p>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">© 2026 Vantix Solutions. Todos os direitos reservados.</p>
+    </div>
 </footer>
+
+<a href="https://wa.me/5511913306933" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 1000, once: true });
 
-    function toggleTheme() {
-        const body = document.body;
-        const icon = document.querySelector('.theme-toggle i');
-        if (body.getAttribute('data-theme') === 'light') {
-            body.removeAttribute('data-theme');
-            icon.classList.replace('fa-sun', 'fa-moon');
+    // Cursor Follower
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Navbar Scroll Effect
+    window.onscroll = () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    };
+
+    // FAQ Toggle
+    function toggleFaq(el) {
+        const body = el.nextElementSibling;
+        const icon = el.querySelector('i');
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            icon.style.transform = "rotate(0deg)";
         } else {
-            body.setAttribute('data-theme', 'light');
-            icon.classList.replace('fa-moon', 'fa-sun');
+            body.style.display = "block";
+            icon.style.transform = "rotate(180deg)";
         }
     }
+
+    // Theme Toggle
+    function toggleTheme() {
+        const body = document.body;
+        if (body.getAttribute('data-theme') === 'light') body.removeAttribute('data-theme');
+        else body.setAttribute('data-theme', 'light');
+    }
 </script>
+
 </body>
 </html>
