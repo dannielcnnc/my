@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vantix Solutions | High-End Digital Agency</title>
+    <title>Vantix Solutions | Digital Authority & AI</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,18 +23,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background-color: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* --- BACKGROUND DECORATION --- */
         .bg-ornament {
             position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
             filter: blur(80px); z-index: -1; opacity: 0.3; pointer-events: none;
         }
 
-        /* --- HEADER --- */
         header {
-            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            position: fixed; top: 0; width: 100%; padding: 25px 8%;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; backdrop-filter: blur(10px);
+            z-index: 1000; backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
         }
         .logo { 
@@ -43,27 +41,17 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* --- HERO SECTION --- */
         .hero {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            padding: 0 8%; position: relative; overflow: hidden;
-        }
-        .hero-tag {
-            background: rgba(46, 204, 113, 0.1); color: var(--primary);
-            padding: 8px 20px; border-radius: 100px; font-size: 0.8rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
-            margin-bottom: 30px; border: 1px solid var(--primary-glow);
+            padding: 0 8%; position: relative;
         }
         .hero h1 {
             font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 800;
             line-height: 0.85; letter-spacing: -4px; margin-bottom: 25px;
         }
-        .hero h1 span { display: block; color: var(--text); opacity: 0.4; }
-        .hero p {
-            font-size: 1.2rem; color: var(--text-dim); max-width: 600px;
-            line-height: 1.6; margin-bottom: 40px;
-        }
+        .hero h1 span { display: block; opacity: 0.4; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
 
         /* --- SIDEBAR --- */
         .sidebar {
@@ -72,44 +60,44 @@
             z-index: 2000; padding: 100px 40px; transition: 0.5s;
         }
         .sidebar.active { right: 0; }
-        .sidebar a { display: block; color: var(--text); text-decoration: none; font-size: 1.2rem; margin-bottom: 30px; font-weight: 600; opacity: 0.6; transition: 0.3s; }
+        .sidebar a { display: block; color: var(--text); text-decoration: none; font-size: 1.2rem; margin-bottom: 30px; font-weight: 600; opacity: 0.6; }
         .sidebar a:hover { opacity: 1; color: var(--primary); transform: translateX(10px); }
-        
         .menu-btn {
-            position: fixed; right: 30px; top: 22px; z-index: 2100;
+            position: fixed; right: 30px; top: 25px; z-index: 2100;
             background: var(--primary); color: #000; width: 50px; height: 50px;
             border-radius: 12px; border: none; cursor: pointer; font-size: 1.5rem;
         }
 
-        /* --- BOTÕES --- */
+        .section { padding: 100px 8%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        /* --- CARDS DE SERVIÇOS --- */
+        .service-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 30px; padding: 40px; transition: 0.4s;
+        }
+        .service-card:hover { border-color: var(--primary); transform: translateY(-10px); background: rgba(46, 204, 113, 0.02); }
+        .service-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .service-card p { color: var(--text-dim); line-height: 1.6; font-size: 0.95rem; }
+        .service-card ul { margin-top: 15px; list-style: none; color: var(--text-dim); font-size: 0.85rem; }
+        .service-card ul li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .service-card ul li::before { content: '→'; color: var(--primary); }
+
+        /* --- SEÇÃO IA / WHATSAPP --- */
+        .ia-highlight {
+            background: linear-gradient(145deg, rgba(46, 204, 113, 0.05) 0%, transparent 100%);
+            border: 1px solid var(--primary-glow); border-radius: 40px; padding: 60px; margin-top: 50px;
+        }
+
         .btn-elite {
             background: var(--primary); color: #000; padding: 20px 50px;
             border-radius: 14px; border: none; font-weight: 800; cursor: pointer;
             text-decoration: none; box-shadow: 0 10px 40px var(--primary-glow);
             transition: 0.3s; display: inline-block;
         }
-        .btn-elite:hover { transform: translateY(-5px); box-shadow: 0 20px 60px var(--primary-glow); }
 
-        /* --- FORMULÁRIOS --- */
-        .section { padding: 100px 8%; }
-        .glass-card { background: var(--card); border: 1px solid var(--border); border-radius: 35px; padding: 40px; backdrop-filter: blur(20px); }
-        input, select, textarea { 
-            width: 100%; padding: 18px; background: rgba(255,255,255,0.03); 
-            border: 1px solid var(--border); border-radius: 12px; color: white; 
-            margin-bottom: 20px; outline: none; appearance: none;
-        }
-        select option { background: #05070a; color: white; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .review-card { text-align: center; border-bottom: 4px solid var(--primary); transition: 0.3s; }
-        .review-card:hover { transform: translateY(-10px); }
-        
         .wa-float { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; z-index: 1000; text-decoration: none; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 4rem; }
-            header { padding: 20px 5%; }
-        }
     </style>
 </head>
 <body>
@@ -125,79 +113,127 @@
 
 <div class="sidebar" id="sidebar">
     <a href="#" onclick="toggleMenu()">Início</a>
-    <a href="#onboarding" onclick="toggleMenu()">Simulador</a>
+    <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+    <a href="#portfolio" onclick="toggleMenu()">Portfólio</a>
     <a href="#avaliacoes" onclick="toggleMenu()">Avaliações</a>
     <div style="margin-top: 50px; display: flex; gap: 20px;">
-        <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/5511913306933"><i class="fab fa-whatsapp"></i></a>
     </div>
 </div>
 
 <section class="hero">
-    <div class="hero-tag" data-aos="fade-down">Premium Digital Experience</div>
     <h1 data-aos="fade-up">VANTIX<span>SOLUTIONS</span></h1>
-    <p data-aos="fade-up" data-aos-delay="200">
-        Interfaces cinematográficas e tecnologia de alta performance para marcas que exigem o topo.
-    </p>
-    <div data-aos="zoom-in" data-aos-delay="400">
-        <a href="#onboarding" class="btn-elite">COMEÇAR PROJETO</a>
+    <p data-aos="fade-up" data-aos-delay="200">Não vendemos sites. Entregamos autoridade digital e automação de lucros.</p>
+    <a href="#servicos" class="btn-elite">NOSSAS SOLUÇÕES</a>
+</section>
+
+<section class="section" id="servicos">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Ecossistema de Elite</h2>
+    <div class="grid">
+        <div class="service-card" data-aos="fade-up">
+            <i class="fas fa-bolt"></i>
+            <h3>Landing Pages High-Ticket</h3>
+            <p>Páginas de alta conversão focadas em produtos e serviços de luxo. Design que transparece autoridade instantânea.</p>
+            <ul>
+                <li>Copywriting persuasivo</li>
+                <li>Carregamento ultra-rápido</li>
+                <li>Otimização para Mobile</li>
+            </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-shopping-bag"></i>
+            <h3>E-commerce de Luxo</h3>
+            <p>Lojas virtuais com experiência de compra cinematográfica. Sistemas robustos e checkout otimizado.</p>
+            <ul>
+                <li>Gestão de estoque inteligente</li>
+                <li>Pagamento em 1 clique</li>
+                <li>Painel administrativo intuitivo</li>
+            </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-robot"></i>
+            <h3>Sistemas de Automação IA</h3>
+            <p>Integramos robôs inteligentes no seu fluxo de trabalho para economizar tempo e aumentar as vendas.</p>
+            <ul>
+                <li>Triagem automática de leads</li>
+                <li>Agendamentos sem humano</li>
+                <li>Fidelização pós-venda</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ia-highlight" data-aos="zoom-in">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Por que ter um Robô 24h no WhatsApp?</h2>
+            <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 30px;">
+                O cliente moderno não espera. Se ele mandar mensagem às 2h da manhã e você não responder, ele vai para o concorrente. 
+                Nossa IA atende, qualifica e fecha vendas enquanto você dorme.
+            </p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;">
+                    <h4 style="color: var(--primary);">Atendimento Imediato</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">Redução de 100% no tempo de espera do cliente.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;">
+                    <h4 style="color: var(--primary);">Filtro de Leads</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">O robô identifica quem é curioso e quem é comprador real.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;">
+                    <h4 style="color: var(--primary);">Escalabilidade</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">Atenda 1.000 pessoas ao mesmo tempo com a mesma qualidade.</p>
+                </div>
+            </div>
+            <a href="https://wa.me/5511913306933" class="btn-elite" style="margin-top: 40px;">QUERO MINHA IA AGORA</a>
+        </div>
     </div>
 </section>
 
-<section class="section" id="onboarding">
-    <div class="glass-card" style="max-width: 800px; margin: 0 auto; border: 1px solid var(--primary);">
-        <div id="step1">
-            <h3 style="margin-bottom: 25px;">Qual o nome da sua marca?</h3>
-            <input type="text" id="brand-name" placeholder="Ex: Vantix Pro">
-            <button class="btn-elite" onclick="nextStep(2)" style="width:100%;">Gerar Preview</button>
+<section class="section" id="portfolio">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Cases de Sucesso</h2>
+    <div class="grid">
+        <div class="service-card" style="padding:0; overflow:hidden;" data-aos="fade-up">
+            <div style="height:200px; background:#111; display:flex; align-items:center; justify-content:center;"><i class="fas fa-gem" style="opacity:0.2;"></i></div>
+            <div style="padding:25px;"><h3>Vantix Jewelers</h3><p style="font-size:0.8rem;">E-commerce de alto padrão com IA integrada.</p></div>
         </div>
-        <div id="step2" style="display: none; text-align: center;">
-            <div style="background: #fff; color: #000; padding: 40px; border-radius: 20px; margin-bottom: 30px;">
-                <div style="border: 2px dashed #ccc; padding: 15px; margin-bottom: 20px; font-weight: bold; color: #999;">SUA LOGO AQUI</div>
-                <h2 id="res-name" style="font-weight: 800;">NOME</h2>
-                <p style="color: #666; margin-top: 10px;">Design por Vantix Solutions</p>
-            </div>
-            <a href="https://wa.me/5511913306933" class="btn-elite" style="width:100%;">RECLAMAR PROJETO</a>
+        <div class="service-card" style="padding:0; overflow:hidden;" data-aos="fade-up" data-aos-delay="100">
+            <div style="height:200px; background:#111; display:flex; align-items:center; justify-content:center;"><i class="fas fa-handshake" style="opacity:0.2;"></i></div>
+            <div style="padding:25px;"><h3>Prime Consultoria</h3><p style="font-size:0.8rem;">Lading Page com automação de agendamentos.</p></div>
         </div>
     </div>
 </section>
 
 <section class="section" id="avaliacoes">
-    <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">Depoimentos de Elite</h2>
+    <h2 style="text-align: center; margin-bottom: 50px;">Feedback de Autoridade</h2>
     <div class="grid" id="reviews-container">
-        <div class="glass-card review-card">
+        <div class="service-card" style="text-align: center; border-bottom: 4px solid var(--primary);">
             <div style="color: #f1c40f; margin-bottom: 15px;">⭐⭐⭐⭐⭐</div>
-            <p>"A melhor agência que já contratei. O design é de outro mundo!"</p>
+            <p>"O robô de WhatsApp que a Vantix instalou dobrou nosso fechamento de vendas em um mês."</p>
             <h5 style="margin-top:20px; color:var(--primary);">Daniel Novaes</h5>
-            <small>CEO - Vantix</small>
+            <small>CEO - Vantix Solutions</small>
         </div>
     </div>
 
     <div class="glass-card" style="max-width: 600px; margin: 60px auto 0; border: 1px dashed var(--primary);">
-        <h3 style="text-align: center; margin-bottom: 30px;">Deixe sua Avaliação</h3>
+        <h3 style="text-align: center; margin-bottom: 30px;">Avalie sua Experiência</h3>
         <form id="review-form">
             <input type="text" name="Nome" id="rev-name" placeholder="Seu Nome" required>
             <input type="email" name="Email" id="rev-email" placeholder="Seu E-mail" required>
-            <input type="text" name="Contato" id="rev-contact" placeholder="Seu WhatsApp (Privado)" required>
-            
-            <label style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px; display: block;">Sua Nota:</label>
             <select name="Nota" id="rev-stars" required>
                 <option value="5">⭐⭐⭐⭐⭐ (5 Estrelas)</option>
                 <option value="4">⭐⭐⭐⭐ (4 Estrelas)</option>
                 <option value="3">⭐⭐⭐ (3 Estrelas)</option>
-                <option value="2">⭐⭐ (2 Estrelas)</option>
-                <option value="1">⭐ (1 Estrela)</option>
             </select>
-
-            <textarea name="Mensagem" id="rev-text" placeholder="Conte sua experiência..." rows="4" required></textarea>
+            <textarea name="Mensagem" id="rev-text" placeholder="Escreva aqui..." rows="4" required></textarea>
             <button type="submit" class="btn-elite" style="width:100%;">ENVIAR AVALIAÇÃO</button>
         </form>
     </div>
 </section>
 
 <footer style="padding: 60px 8%; text-align: center; border-top: 1px solid var(--border);">
-    <div class="logo" style="margin-bottom: 20px;">VANTIX_</div>
-    <p style="color: var(--text-dim);">© 2026 | novaesdanniel0802@gmail.com</p>
+    <div class="logo">VANTIX_</div>
+    <p style="color: var(--text-dim); margin-top: 10px;">novaesdanniel0802@gmail.com</p>
 </footer>
 
 <a href="https://wa.me/5511913306933" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -205,18 +241,8 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
-
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
 
-    function nextStep(step) {
-        const name = document.getElementById('brand-name').value;
-        if(!name) return alert("Digite o nome da marca!");
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-        document.getElementById('res-name').innerText = name.toUpperCase();
-    }
-
-    // CONFIGURAÇÃO DO EMAIL (LEMBRE-SE DE COLOCAR SEU LINK DO FORMSPREE AQUI)
     const FORMSPREE_URL = "https://formspree.io/f/seu_codigo_aqui";
 
     document.getElementById('review-form').addEventListener('submit', function(e) {
@@ -226,12 +252,11 @@
         const text = document.getElementById('rev-text').value;
         const starsValue = document.getElementById('rev-stars').value;
 
-        // Gerar as estrelas visuais
-        let starRating = "";
-        for(let i=0; i<starsValue; i++) starRating += "⭐";
-        
+        let starRating = "⭐".repeat(starsValue);
         const div = document.createElement('div');
-        div.className = 'glass-card review-card';
+        div.className = 'service-card';
+        div.style.textAlign = 'center';
+        div.style.borderBottom = '4px solid var(--primary)';
         div.innerHTML = `<div style="color:#f1c40f; margin-bottom:15px;">${starRating}</div><p>"${text}"</p><h5 style="margin-top:20px; color:var(--primary);">${name}</h5><small>Cliente Verificado</small>`;
         container.prepend(div);
 
@@ -240,11 +265,10 @@
             body: new FormData(this),
             headers: { 'Accept': 'application/json' }
         }).then(() => {
-            alert('Avaliação enviada com sucesso para Daniel!');
+            alert('Avaliação enviada com sucesso!');
             this.reset();
         });
     });
 </script>
-
 </body>
 </html>
