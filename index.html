@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vantix Solutions | Digital Authority</title>
+    <title>Vantix Solutions | High-End Digital Agency</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,263 +13,211 @@
         :root {
             --primary: #2ECC71;
             --primary-glow: rgba(46, 204, 113, 0.4);
-            --bg: #030508;
-            --card: rgba(255, 255, 255, 0.03);
+            --bg: #05070a;
+            --card: rgba(255, 255, 255, 0.02);
             --text: #ffffff;
             --text-dim: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
         }
 
-        [data-theme="light"] {
-            --bg: #f8fafc;
-            --card: rgba(255, 255, 255, 0.9);
-            --text: #0f172a;
-            --text-dim: #475569;
-            --border: rgba(0, 0, 0, 0.1);
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- BACKGROUND DECORATION --- */
+        .bg-ornament {
+            position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            filter: blur(80px); z-index: -1; opacity: 0.3; pointer-events: none;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; transition: background 0.4s, color 0.4s; }
-        
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
-
-        /* Background Glow */
-        .glow {
-            position: fixed; width: 50vw; height: 50vw; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            z-index: -1; filter: blur(100px); pointer-events: none; opacity: 0.4;
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { 
+            font-size: 1.8rem; font-weight: 800; letter-spacing: -1px;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* --- SIDEBAR MENU --- */
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 0 8%; position: relative; overflow: hidden;
+        }
+        .hero-tag {
+            background: rgba(46, 204, 113, 0.1); color: var(--primary);
+            padding: 8px 20px; border-radius: 100px; font-size: 0.8rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 30px; border: 1px solid var(--primary-glow);
+        }
+        .hero h1 {
+            font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 800;
+            line-height: 0.85; letter-spacing: -4px; margin-bottom: 25px;
+        }
+        .hero h1 span { display: block; color: var(--text); opacity: 0.4; }
+        .hero p {
+            font-size: 1.2rem; color: var(--text-dim); max-width: 600px;
+            line-height: 1.6; margin-bottom: 40px;
+        }
+
+        /* --- SIDEBAR --- */
         .sidebar {
             position: fixed; right: -320px; top: 0; width: 300px; height: 100vh;
-            background: var(--bg); backdrop-filter: blur(20px); border-left: 1px solid var(--border);
-            z-index: 2000; padding: 100px 40px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(5, 7, 10, 0.98); border-left: 1px solid var(--border);
+            z-index: 2000; padding: 100px 40px; transition: 0.5s;
         }
         .sidebar.active { right: 0; }
-        .sidebar a { display: block; color: var(--text); text-decoration: none; font-size: 1.2rem; margin-bottom: 30px; font-weight: 600; opacity: 0.7; }
+        .sidebar a { display: block; color: var(--text); text-decoration: none; font-size: 1.2rem; margin-bottom: 30px; font-weight: 600; opacity: 0.6; transition: 0.3s; }
         .sidebar a:hover { opacity: 1; color: var(--primary); transform: translateX(10px); }
         
         .menu-btn {
-            position: fixed; right: 30px; top: 30px; z-index: 2100;
-            background: var(--primary); color: #000; width: 55px; height: 55px;
-            border-radius: 15px; border: none; cursor: pointer; font-size: 1.5rem;
-            box-shadow: 0 0 20px var(--primary-glow); display: flex; align-items: center; justify-content: center;
+            position: fixed; right: 30px; top: 22px; z-index: 2100;
+            background: var(--primary); color: #000; width: 50px; height: 50px;
+            border-radius: 12px; border: none; cursor: pointer; font-size: 1.5rem;
         }
 
-        /* Hero Section */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 8%; }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 800; line-height: 0.9; margin-bottom: 25px; letter-spacing: -3px; }
-        .hero h1 span { color: var(--primary); text-shadow: 0 0 30px var(--primary-glow); }
-        .hero p { font-size: 1.3rem; color: var(--text-dim); max-width: 750px; margin-bottom: 45px; }
+        /* --- BOTÕES --- */
+        .btn-elite {
+            background: var(--primary); color: #000; padding: 20px 50px;
+            border-radius: 14px; border: none; font-weight: 800; cursor: pointer;
+            text-decoration: none; box-shadow: 0 10px 40px var(--primary-glow);
+            transition: 0.3s; display: inline-block;
+        }
+        .btn-elite:hover { transform: translateY(-5px); box-shadow: 0 20px 60px var(--primary-glow); }
 
-        /* UI Components */
+        /* --- FORMULÁRIOS --- */
         .section { padding: 100px 8%; }
-        .glass-card { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 45px; backdrop-filter: blur(20px); }
-        .btn-elite { 
-            background: var(--primary); color: #000; padding: 20px 45px; border-radius: 16px; 
-            border: none; font-weight: 800; cursor: pointer; text-decoration: none; 
-            display: inline-block; box-shadow: 0 10px 40px var(--primary-glow);
-            font-size: 1.1rem;
-        }
-        .btn-elite:hover { transform: translateY(-5px); box-shadow: 0 15px 60px var(--primary-glow); }
-
+        .glass-card { background: var(--card); border: 1px solid var(--border); border-radius: 35px; padding: 40px; backdrop-filter: blur(20px); }
         input, select, textarea { 
-            width: 100%; padding: 18px; background: rgba(255,255,255,0.05); 
-            border: 1px solid var(--border); border-radius: 14px; color: white; 
-            margin-bottom: 20px; outline: none; font-size: 1rem;
+            width: 100%; padding: 18px; background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--border); border-radius: 12px; color: white; 
+            margin-bottom: 20px; outline: none; appearance: none;
         }
-        [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { color: #000; background: rgba(0,0,0,0.05); }
-
-        /* Grid & Reviews */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .review-card { text-align: center; border-bottom: 4px solid var(--primary); transition: 0.4s; }
+        select option { background: #05070a; color: white; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .review-card { text-align: center; border-bottom: 4px solid var(--primary); transition: 0.3s; }
         .review-card:hover { transform: translateY(-10px); }
-        .stars { color: #f1c40f; margin-bottom: 15px; font-size: 1.3rem; }
+        
+        .wa-float { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; z-index: 1000; text-decoration: none; }
 
-        /* FAQ */
-        .faq-item { margin-bottom: 18px; }
-        .faq-header { padding: 25px; background: var(--card); border-radius: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 1.1rem; }
-        .faq-body { padding: 0 25px 25px; color: var(--text-dim); display: none; line-height: 1.7; font-size: 1rem; }
-
-        /* Floating WhatsApp */
-        .wa-float { position: fixed; bottom: 35px; left: 35px; width: 65px; height: 65px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; color: white; z-index: 1000; box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4); animation: pulse 2s infinite; text-decoration: none; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        @media (max-width: 768px) { .section { padding: 70px 5%; } .hero h1 { font-size: 3.8rem; } }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            header { padding: 20px 5%; }
+        }
     </style>
 </head>
 <body>
 
-<div class="glow" style="top: -10%; right: -5%;"></div>
-<div class="glow" style="bottom: -10%; left: -5%;"></div>
+<div class="bg-ornament" style="top: -10%; right: -5%;"></div>
+<div class="bg-ornament" style="bottom: -10%; left: -5%;"></div>
+
+<header>
+    <div class="logo">VANTIX_</div>
+</header>
 
 <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
 
 <div class="sidebar" id="sidebar">
-    <a href="#onboarding" onclick="toggleMenu()">Simulador AI</a>
-    <a href="#portfolio" onclick="toggleMenu()">Portfólio</a>
+    <a href="#" onclick="toggleMenu()">Início</a>
+    <a href="#onboarding" onclick="toggleMenu()">Simulador</a>
     <a href="#avaliacoes" onclick="toggleMenu()">Avaliações</a>
-    <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
-    <div style="margin: 40px 0; height: 1px; background: var(--border);"></div>
-    <button onclick="toggleTheme()" style="background:none; border:2px solid var(--primary); color:var(--primary); padding:10px 20px; border-radius:10px; font-weight:bold; cursor:pointer; width: 100%;">TROCAR TEMA</button>
-    <div style="margin-top: 50px; display: flex; gap: 25px; font-size: 1.8rem;">
+    <div style="margin-top: 50px; display: flex; gap: 20px;">
         <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5511913306933" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/5511913306933"><i class="fab fa-whatsapp"></i></a>
     </div>
 </div>
 
-<header style="padding: 40px 8%; position: absolute; top:0; width:100%;">
-    <div class="logo">VANTIX<span style="color: #fff">_</span></div>
-</header>
-
 <section class="hero">
-    <h1 data-aos="fade-up">A Nova Era do <span>Design.</span></h1>
-    <p data-aos="fade-up" data-aos-delay="200">Criamos ecossistemas digitais de alto padrão para quem não aceita o básico. Design cinematográfico focado em conversão extrema.</p>
-    <a href="#onboarding" class="btn-elite" data-aos="zoom-in" data-aos-delay="400">INICIAR SIMULAÇÃO</a>
-</section>
-
-<section class="section" id="onboarding">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Simulador de Projeto</h2>
-    <div class="glass-card" style="max-width: 800px; margin: 0 auto; border: 1px solid var(--primary);">
-        <div id="step1">
-            <h3 style="margin-bottom: 25px;"><i class="fas fa-rocket"></i> Qual o nome da sua marca?</h3>
-            <input type="text" id="brand-name" placeholder="Digite aqui o nome da empresa...">
-            <button class="btn-elite" onclick="nextStep(2)" style="width:100%;">Gerar Rascunho <i class="fas fa-magic"></i></button>
-        </div>
-        
-        <div id="step2" style="display: none; text-align: center;">
-            <div id="preview-box" style="background: #ffffff; color: #1a1a1a; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
-                <div style="border: 2px dashed #ccc; padding: 15px; margin-bottom: 25px; color: #888; font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;">SUA LOGO AQUI</div>
-                <h2 id="res-name" style="font-size: 2rem; margin-bottom: 15px; color: #000;">NOME DA EMPRESA</h2>
-                <div style="width: 100px; height: 4px; background: var(--primary); margin: 0 auto 20px;"></div>
-                <p style="color: #666; font-size: 0.9rem;">Interface inicial gerada pela Vantix Engine.</p>
-            </div>
-            <p style="margin-bottom: 30px; color: var(--text-dim);">Gostou do conceito inicial? Vamos profissionalizar cada pixel.</p>
-            <a href="https://wa.me/5511913306933" target="_blank" class="btn-elite" style="width:100%;">RECLAMAR ESSE PROJETO NO WHATSAPP</a>
-        </div>
+    <div class="hero-tag" data-aos="fade-down">Premium Digital Experience</div>
+    <h1 data-aos="fade-up">VANTIX<span>SOLUTIONS</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200">
+        Interfaces cinematográficas e tecnologia de alta performance para marcas que exigem o topo.
+    </p>
+    <div data-aos="zoom-in" data-aos-delay="400">
+        <a href="#onboarding" class="btn-elite">COMEÇAR PROJETO</a>
     </div>
 </section>
 
-<section class="section" id="portfolio">
-    <h2 style="margin-bottom: 50px; font-size: 2.2rem;">Projetos Recentes</h2>
-    <div class="grid">
-        <div class="glass-card" data-aos="fade-up">
-            <div style="height:220px; background:linear-gradient(45deg, #111, #222); border-radius:20px; display:flex; align-items:center; justify-content:center;">
-                <i class="fas fa-laptop-code" style="font-size: 4rem; opacity: 0.2;"></i>
-            </div>
-            <h3 style="margin-top:25px;">Landing Page High-Ticket</h3>
-            <p style="color: var(--text-dim); margin-top: 10px;">Focada em conversão para infoprodutos e serviços de luxo.</p>
+<section class="section" id="onboarding">
+    <div class="glass-card" style="max-width: 800px; margin: 0 auto; border: 1px solid var(--primary);">
+        <div id="step1">
+            <h3 style="margin-bottom: 25px;">Qual o nome da sua marca?</h3>
+            <input type="text" id="brand-name" placeholder="Ex: Vantix Pro">
+            <button class="btn-elite" onclick="nextStep(2)" style="width:100%;">Gerar Preview</button>
         </div>
-        <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-            <div style="height:220px; background:linear-gradient(45deg, #111, #222); border-radius:20px; display:flex; align-items:center; justify-content:center;">
-                <i class="fas fa-robot" style="font-size: 4rem; opacity: 0.2;"></i>
+        <div id="step2" style="display: none; text-align: center;">
+            <div style="background: #fff; color: #000; padding: 40px; border-radius: 20px; margin-bottom: 30px;">
+                <div style="border: 2px dashed #ccc; padding: 15px; margin-bottom: 20px; font-weight: bold; color: #999;">SUA LOGO AQUI</div>
+                <h2 id="res-name" style="font-weight: 800;">NOME</h2>
+                <p style="color: #666; margin-top: 10px;">Design por Vantix Solutions</p>
             </div>
-            <h3 style="margin-top:25px;">Automação com IA</h3>
-            <p style="color: var(--text-dim); margin-top: 10px;">Sistemas de atendimento inteligente via WhatsApp e Web.</p>
+            <a href="https://wa.me/5511913306933" class="btn-elite" style="width:100%;">RECLAMAR PROJETO</a>
         </div>
     </div>
 </section>
 
 <section class="section" id="avaliacoes">
-    <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.2rem;">O Que Dizem Nossos Clientes</h2>
-    
+    <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">Depoimentos de Elite</h2>
     <div class="grid" id="reviews-container">
         <div class="glass-card review-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>"A Vantix não faz apenas sites, eles criam máquinas de venda. O suporte do Daniel é diferenciado."</p>
-            <h5 style="margin-top:25px; color:var(--primary); font-size: 1.1rem;">Daniel Novaes</h5>
-            <small style="opacity: 0.6;">Founder - Vantix Solutions</small>
+            <div style="color: #f1c40f; margin-bottom: 15px;">⭐⭐⭐⭐⭐</div>
+            <p>"A melhor agência que já contratei. O design é de outro mundo!"</p>
+            <h5 style="margin-top:20px; color:var(--primary);">Daniel Novaes</h5>
+            <small>CEO - Vantix</small>
         </div>
     </div>
 
-    <div class="glass-card" style="max-width: 700px; margin: 70px auto 0; border: 1px dashed var(--primary);">
-        <h3 style="text-align: center; margin-bottom: 30px;">Deixe sua Experiência</h3>
+    <div class="glass-card" style="max-width: 600px; margin: 60px auto 0; border: 1px dashed var(--primary);">
+        <h3 style="text-align: center; margin-bottom: 30px;">Deixe sua Avaliação</h3>
         <form id="review-form">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <input type="text" name="Nome" id="rev-name" placeholder="Seu Nome Completo" required>
-                <input type="email" name="Email" id="rev-email" placeholder="Seu E-mail" required>
-            </div>
-            <input type="text" name="Contato_Privado" id="rev-contact" placeholder="Seu WhatsApp ou LinkedIn (Oculto ao Público)" required>
+            <input type="text" name="Nome" id="rev-name" placeholder="Seu Nome" required>
+            <input type="email" name="Email" id="rev-email" placeholder="Seu E-mail" required>
+            <input type="text" name="Contato" id="rev-contact" placeholder="Seu WhatsApp (Privado)" required>
             
-            <div style="margin-bottom: 25px;">
-                <label style="display:block; margin-bottom:10px; font-size: 0.9rem; opacity: 0.8;">Sua Nota:</label>
-                <select name="Nota_Estrelas" id="rev-stars">
-                    <option value="5">⭐⭐⭐⭐⭐ (5 Estrelas)</option>
-                    <option value="4">⭐⭐⭐⭐ (4 Estrelas)</option>
-                    <option value="3">⭐⭐⭐ (3 Estrelas)</option>
-                </select>
-            </div>
+            <label style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px; display: block;">Sua Nota:</label>
+            <select name="Nota" id="rev-stars" required>
+                <option value="5">⭐⭐⭐⭐⭐ (5 Estrelas)</option>
+                <option value="4">⭐⭐⭐⭐ (4 Estrelas)</option>
+                <option value="3">⭐⭐⭐ (3 Estrelas)</option>
+                <option value="2">⭐⭐ (2 Estrelas)</option>
+                <option value="1">⭐ (1 Estrela)</option>
+            </select>
 
-            <textarea name="Mensagem" id="rev-text" placeholder="Como foi trabalhar conosco?" rows="4" required></textarea>
-            
-            <button type="submit" class="btn-elite" style="width:100%;">PUBLICAR AVALIAÇÃO <i class="fas fa-paper-plane"></i></button>
+            <textarea name="Mensagem" id="rev-text" placeholder="Conte sua experiência..." rows="4" required></textarea>
+            <button type="submit" class="btn-elite" style="width:100%;">ENVIAR AVALIAÇÃO</button>
         </form>
     </div>
 </section>
 
-<section class="section" id="faq">
-    <h2 style="margin-bottom: 45px; font-size: 2.2rem;">Perguntas Frequentes</h2>
-    <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-header">Quanto tempo para entregar meu site? <i class="fas fa-plus"></i></div>
-        <div class="faq-body">O prazo médio para Landing Pages de alta performance é de 7 a 12 dias úteis, dependendo da complexidade.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-header">Vocês fazem a logo também? <i class="fas fa-plus"></i></div>
-        <div class="faq-body">Sim! Temos pacotes de Branding que incluem Identidade Visual completa para sua marca nascer com autoridade.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-header">Como funciona o suporte pós-entrega? <i class="fas fa-plus"></i></div>
-        <div class="faq-body">Damos 30 dias de suporte total gratuito para ajustes e acompanhamento. Após isso, temos planos de manutenção mensal.</div>
-    </div>
-</section>
-
-<footer style="padding: 80px 8% 40px; text-align: center; border-top: 1px solid var(--border); background: rgba(0,0,0,0.2);">
-    <div class="logo" style="font-size: 2.5rem; margin-bottom: 20px;">VANTIX</div>
-    <p style="color: var(--text-dim); margin-bottom: 30px;">Digital Solutions for the Next Era.</p>
-    <p style="opacity: 0.4; font-size: 0.8rem;">© 2026 Vantix Solutions. Todos os direitos reservados. | São Paulo, Brasil.</p>
+<footer style="padding: 60px 8%; text-align: center; border-top: 1px solid var(--border);">
+    <div class="logo" style="margin-bottom: 20px;">VANTIX_</div>
+    <p style="color: var(--text-dim);">© 2026 | novaesdanniel0802@gmail.com</p>
 </footer>
 
 <a href="https://wa.me/5511913306933" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 1000, once: true });
+    AOS.init();
 
-    // Menu Toggle
-    function toggleMenu() { 
-        document.getElementById('sidebar').classList.toggle('active'); 
-    }
-    
-    // FAQ Toggle
-    function toggleFaq(el) {
-        const body = el.querySelector('.faq-body');
-        const icon = el.querySelector('i');
-        if (body.style.display === 'block') {
-            body.style.display = 'none';
-            icon.classList.replace('fa-minus', 'fa-plus');
-        } else {
-            body.style.display = 'block';
-            icon.classList.replace('fa-plus', 'fa-minus');
-        }
-    }
+    function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
 
-    // Theme Toggle
-    function toggleTheme() {
-        const body = document.body;
-        if (body.getAttribute('data-theme') === 'light') body.removeAttribute('data-theme');
-        else body.setAttribute('data-theme', 'light');
-    }
-
-    // Simulador Logic
     function nextStep(step) {
         const name = document.getElementById('brand-name').value;
-        if(!name) { alert("Por favor, insira o nome da sua empresa."); return; }
+        if(!name) return alert("Digite o nome da marca!");
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
         document.getElementById('res-name').innerText = name.toUpperCase();
     }
 
-    // --- CONFIGURAÇÃO DO EMAIL (COLE SEU LINK DO FORMSPREE ABAIXO) ---
-    const FORMSPREE_URL = "https://formspree.io/f/xojyndzk";
+    // CONFIGURAÇÃO DO EMAIL (LEMBRE-SE DE COLOCAR SEU LINK DO FORMSPREE AQUI)
+    const FORMSPREE_URL = "https://formspree.io/f/seu_codigo_aqui";
 
     document.getElementById('review-form').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -278,24 +226,22 @@
         const text = document.getElementById('rev-text').value;
         const starsValue = document.getElementById('rev-stars').value;
 
-        // Adicionar Visualmente no Site
+        // Gerar as estrelas visuais
+        let starRating = "";
+        for(let i=0; i<starsValue; i++) starRating += "⭐";
+        
         const div = document.createElement('div');
         div.className = 'glass-card review-card';
-        div.innerHTML = `<div class="stars">${"⭐".repeat(starsValue)}</div><p>"${text}"</p><h5 style="margin-top:25px; color:var(--primary); font-size:1.1rem;">${name}</h5><small style="opacity:0.6;">Cliente Verificado</small>`;
+        div.innerHTML = `<div style="color:#f1c40f; margin-bottom:15px;">${starRating}</div><p>"${text}"</p><h5 style="margin-top:20px; color:var(--primary);">${name}</h5><small>Cliente Verificado</small>`;
         container.prepend(div);
 
-        // Enviar via Formspree
         fetch(FORMSPREE_URL, {
             method: 'POST',
             body: new FormData(this),
             headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            if (response.ok) {
-                alert('Avaliação enviada com sucesso! Obrigado pela confiança.');
-                this.reset();
-            } else {
-                alert('Ocorreu um erro ao enviar. Verifique o link do Formspree.');
-            }
+        }).then(() => {
+            alert('Avaliação enviada com sucesso para Daniel!');
+            this.reset();
         });
     });
 </script>
