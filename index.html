@@ -1,274 +1,985 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vantix Solutions | Digital Authority & AI</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --primary: #2ECC71;
-            --primary-glow: rgba(46, 204, 113, 0.4);
-            --bg: #05070a;
-            --card: rgba(255, 255, 255, 0.02);
-            --text: #ffffff;
-            --text-dim: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-        }
+<!-- SEO -->
+<title>Vantix Solutions | Autoridade Digital & IA para Negócios</title>
+<meta name="description" content="Sites de alto padrão, automação com IA e robôs de WhatsApp que vendem enquanto você dorme. Transforme seu negócio com a Vantix Solutions.">
+<meta name="keywords" content="sites profissionais, automação whatsapp, inteligência artificial, landing page, e-commerce, agência digital">
+<meta property="og:title" content="Vantix Solutions | Autoridade Digital & IA">
+<meta property="og:description" content="Não vendemos sites. Entregamos autoridade digital e automação de lucros.">
+<meta property="og:type" content="website">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .bg-ornament {
-            position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            filter: blur(80px); z-index: -1; opacity: 0.3; pointer-events: none;
-        }
+<style>
+:root {
+  --primary: #2ECC71;
+  --primary-dark: #27ae60;
+  --primary-glow: rgba(46, 204, 113, 0.35);
+  --bg: #05070a;
+  --surface: #0a0d12;
+  --card: rgba(255,255,255,0.03);
+  --card-hover: rgba(46,204,113,0.04);
+  --text: #ffffff;
+  --text-dim: #94a3b8;
+  --border: rgba(255,255,255,0.07);
+  --border-green: rgba(46,204,113,0.3);
+  --wa: #25D366;
+}
 
-        header {
-            position: fixed; top: 0; width: 100%; padding: 25px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-        }
-        .logo { 
-            font-size: 1.8rem; font-weight: 800; letter-spacing: -1px;
-            background: linear-gradient(90deg, #fff, var(--primary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
 
-        .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 0 8%; position: relative;
-        }
-        .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 800;
-            line-height: 0.85; letter-spacing: -4px; margin-bottom: 25px;
-        }
-        .hero h1 span { display: block; opacity: 0.4; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
+/* ── NOISE OVERLAY ── */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:.25;
+}
 
-        /* --- SIDEBAR --- */
-        .sidebar {
-            position: fixed; right: -320px; top: 0; width: 300px; height: 100vh;
-            background: rgba(5, 7, 10, 0.98); border-left: 1px solid var(--border);
-            z-index: 2000; padding: 100px 40px; transition: 0.5s;
-        }
-        .sidebar.active { right: 0; }
-        .sidebar a { display: block; color: var(--text); text-decoration: none; font-size: 1.2rem; margin-bottom: 30px; font-weight: 600; opacity: 0.6; }
-        .sidebar a:hover { opacity: 1; color: var(--primary); transform: translateX(10px); }
-        .menu-btn {
-            position: fixed; right: 30px; top: 25px; z-index: 2100;
-            background: var(--primary); color: #000; width: 50px; height: 50px;
-            border-radius: 12px; border: none; cursor: pointer; font-size: 1.5rem;
-        }
+.bg-orb {
+  position:absolute; border-radius:50%;
+  background: radial-gradient(circle, var(--primary-glow), transparent 70%);
+  filter:blur(80px); pointer-events:none; z-index:0; opacity:.4;
+}
 
-        .section { padding: 100px 8%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+/* ── HEADER ── */
+header {
+  position:fixed; top:0; width:100%; z-index:1000;
+  padding:20px 6%;
+  display:flex; justify-content:space-between; align-items:center;
+  backdrop-filter:blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s;
+}
+header.scrolled { background: rgba(5,7,10,.95); }
 
-        /* --- CARDS DE SERVIÇOS --- */
-        .service-card {
-            background: var(--card); border: 1px solid var(--border);
-            border-radius: 30px; padding: 40px; transition: 0.4s;
-        }
-        .service-card:hover { border-color: var(--primary); transform: translateY(-10px); background: rgba(46, 204, 113, 0.02); }
-        .service-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
-        .service-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
-        .service-card p { color: var(--text-dim); line-height: 1.6; font-size: 0.95rem; }
-        .service-card ul { margin-top: 15px; list-style: none; color: var(--text-dim); font-size: 0.85rem; }
-        .service-card ul li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .service-card ul li::before { content: '→'; color: var(--primary); }
+.logo {
+  font-family:'Syne',sans-serif;
+  font-size:1.6rem; font-weight:800; letter-spacing:-1px;
+  background: linear-gradient(90deg,#fff 40%,var(--primary));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  text-decoration:none;
+}
 
-        /* --- SEÇÃO IA / WHATSAPP --- */
-        .ia-highlight {
-            background: linear-gradient(145deg, rgba(46, 204, 113, 0.05) 0%, transparent 100%);
-            border: 1px solid var(--primary-glow); border-radius: 40px; padding: 60px; margin-top: 50px;
-        }
+/* Desktop nav */
+.nav-desktop { display:flex; gap:2.5rem; list-style:none; }
+.nav-desktop a {
+  color:var(--text-dim); text-decoration:none;
+  font-size:.85rem; letter-spacing:.06em; text-transform:uppercase;
+  transition: color .2s;
+}
+.nav-desktop a:hover { color:var(--primary); }
 
-        .btn-elite {
-            background: var(--primary); color: #000; padding: 20px 50px;
-            border-radius: 14px; border: none; font-weight: 800; cursor: pointer;
-            text-decoration: none; box-shadow: 0 10px 40px var(--primary-glow);
-            transition: 0.3s; display: inline-block;
-        }
+/* ── HAMBURGER (MOBILE) ── */
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:4px; z-index:2200;
+}
+.hamburger span {
+  display:block; width:24px; height:2px;
+  background:var(--text); border-radius:2px;
+  transition: transform .35s, opacity .35s, width .35s;
+}
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; width:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
-        .wa-float { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; z-index: 1000; text-decoration: none; }
-    </style>
+/* Mobile drawer */
+.mobile-nav {
+  position:fixed; inset:0; z-index:2100;
+  background:rgba(5,7,10,.98);
+  backdrop-filter:blur(24px);
+  display:flex; flex-direction:column; justify-content:center; align-items:center; gap:2.5rem;
+  opacity:0; pointer-events:none; transform:translateY(-20px);
+  transition: opacity .4s, transform .4s;
+}
+.mobile-nav.open { opacity:1; pointer-events:all; transform:translateY(0); }
+.mobile-nav a {
+  font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:800;
+  color:var(--text); text-decoration:none; letter-spacing:-1px;
+  transition:color .2s;
+}
+.mobile-nav a:hover { color:var(--primary); }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; text-align:center;
+  padding:120px 6% 80px; position:relative; overflow:hidden;
+}
+.hero-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(46,204,113,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,204,113,.03) 1px, transparent 1px);
+  background-size:70px 70px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  border:1px solid var(--border-green);
+  padding:.4rem 1.1rem; border-radius:999px;
+  font-size:.72rem; color:var(--primary); letter-spacing:.12em; text-transform:uppercase;
+  margin-bottom:2rem;
+  animation: fadeDown .6s .1s ease both;
+}
+.hero-badge span { width:6px; height:6px; border-radius:50%; background:var(--primary); animation:pulse 1.5s infinite; }
+
+.hero h1 {
+  font-family:'Syne',sans-serif;
+  font-size: clamp(3.5rem,11vw,7.5rem);
+  font-weight:800; line-height:.88; letter-spacing:-4px;
+  margin-bottom:1.5rem;
+  animation: fadeDown .7s .25s ease both;
+}
+.hero h1 .dim { display:block; opacity:.35; }
+.hero p {
+  font-size:1.1rem; color:var(--text-dim); max-width:560px;
+  line-height:1.7; margin-bottom:2.5rem;
+  animation: fadeDown .7s .4s ease both;
+}
+.hero-cta {
+  display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+  animation: fadeDown .7s .55s ease both;
+}
+.btn-primary {
+  background:var(--primary); color:#000; padding:.9rem 2.2rem;
+  border-radius:12px; border:none; font-weight:800; font-size:.85rem;
+  letter-spacing:.06em; text-transform:uppercase; cursor:pointer;
+  text-decoration:none; transition:transform .2s, box-shadow .2s;
+  box-shadow:0 8px 30px var(--primary-glow);
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 16px 40px var(--primary-glow); }
+.btn-ghost {
+  background:transparent; color:var(--text); padding:.9rem 2.2rem;
+  border-radius:12px; border:1px solid var(--border); font-weight:600; font-size:.85rem;
+  text-decoration:none; transition:border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color:var(--primary); color:var(--primary); }
+
+.hero-stats {
+  display:flex; gap:3rem; margin-top:4rem; flex-wrap:wrap; justify-content:center;
+  animation: fadeDown .7s .7s ease both;
+}
+.stat { text-align:center; }
+.stat strong { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--primary); display:block; }
+.stat span { font-size:.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.1em; }
+
+/* ── SECTION SHARED ── */
+section { padding:100px 6%; position:relative; }
+.section-tag {
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-size:.7rem; color:var(--primary); letter-spacing:.18em; text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.section-tag::before { content:''; width:24px; height:1px; background:var(--primary); }
+.section-title {
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-1px;
+  line-height:1.1; margin-bottom:1rem;
+}
+.section-sub { color:var(--text-dim); font-size:.95rem; line-height:1.7; max-width:580px; }
+
+/* ── SERVICES ── */
+#servicos { background:var(--surface); }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-top:4rem; }
+.service-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:24px; padding:2.2rem;
+  transition:border-color .3s, transform .3s, background .3s;
+  position:relative; overflow:hidden;
+}
+.service-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(46,204,113,.06), transparent 60%);
+  opacity:0; transition:opacity .3s;
+}
+.service-card:hover { border-color:var(--border-green); transform:translateY(-6px); background:var(--card-hover); }
+.service-card:hover::before { opacity:1; }
+.service-icon {
+  width:52px; height:52px; border-radius:14px;
+  background:rgba(46,204,113,.1); border:1px solid var(--border-green);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; color:var(--primary); margin-bottom:1.4rem;
+}
+.service-card h3 { font-size:1.15rem; font-weight:700; margin-bottom:.7rem; }
+.service-card p { color:var(--text-dim); font-size:.85rem; line-height:1.7; margin-bottom:1rem; }
+.service-card ul { list-style:none; }
+.service-card ul li {
+  color:var(--text-dim); font-size:.8rem; padding:.35rem 0;
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:.5rem;
+}
+.service-card ul li:last-child { border-bottom:none; }
+.service-card ul li::before { content:'→'; color:var(--primary); font-size:.75rem; }
+
+/* ── IA BANNER ── */
+.ia-banner {
+  margin-top:3rem; border:1px solid var(--border-green);
+  border-radius:32px; padding:3.5rem;
+  background:linear-gradient(135deg, rgba(46,204,113,.05) 0%, transparent 70%);
+  position:relative; overflow:hidden;
+}
+.ia-banner-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.ia-mini-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.ia-mini {
+  background:rgba(255,255,255,.03); border:1px solid var(--border);
+  border-radius:16px; padding:1.2rem;
+}
+.ia-mini h4 { color:var(--primary); font-size:.85rem; margin-bottom:.4rem; }
+.ia-mini p { color:var(--text-dim); font-size:.75rem; line-height:1.6; }
+
+/* ── PORTFOLIO ── */
+.portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-top:4rem; }
+.portfolio-card {
+  border-radius:20px; overflow:hidden; border:1px solid var(--border);
+  transition:transform .3s, border-color .3s; cursor:pointer;
+  position:relative;
+}
+.portfolio-card:hover { transform:scale(1.02); border-color:var(--border-green); }
+.portfolio-img {
+  width:100%; aspect-ratio:16/10; overflow:hidden; position:relative;
+}
+.portfolio-img img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .5s;
+}
+.portfolio-card:hover .portfolio-img img { transform:scale(1.07); }
+.portfolio-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(5,7,10,.9) 0%, transparent 50%);
+  display:flex; align-items:flex-end; padding:1.5rem;
+  opacity:0; transition:opacity .3s;
+}
+.portfolio-card:hover .portfolio-overlay { opacity:1; }
+.portfolio-overlay a {
+  color:var(--primary); font-size:.8rem; font-weight:700;
+  text-decoration:none; letter-spacing:.08em; text-transform:uppercase;
+  display:flex; align-items:center; gap:.4rem;
+}
+.portfolio-info { padding:1.4rem; background:var(--card); }
+.portfolio-info h3 { font-size:1rem; font-weight:700; margin-bottom:.3rem; }
+.portfolio-info p { color:var(--text-dim); font-size:.78rem; }
+.portfolio-tags { display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.7rem; }
+.ptag {
+  font-size:.65rem; color:var(--primary);
+  border:1px solid var(--border-green); padding:.2rem .55rem; border-radius:999px;
+}
+
+/* ── PRICING ── */
+#precos { background:var(--surface); }
+.pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-top:4rem; }
+.pricing-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:24px; padding:2.2rem;
+  transition:transform .3s, border-color .3s;
+  position:relative;
+}
+.pricing-card.featured {
+  border-color:var(--primary);
+  background:linear-gradient(145deg, rgba(46,204,113,.07), var(--card));
+}
+.pricing-badge {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:var(--primary); color:#000;
+  font-size:.65rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+  padding:.3rem .9rem; border-radius:999px;
+}
+.pricing-card h3 { font-size:1rem; font-weight:700; color:var(--text-dim); margin-bottom:.8rem; text-transform:uppercase; letter-spacing:.1em; }
+.pricing-price {
+  font-family:'Syne',sans-serif; font-size:2.8rem; font-weight:800;
+  color:var(--text); line-height:1; margin-bottom:.3rem;
+}
+.pricing-price small { font-size:.9rem; color:var(--text-dim); font-family:'Plus Jakarta Sans',sans-serif; }
+.pricing-desc { color:var(--text-dim); font-size:.8rem; margin-bottom:1.5rem; }
+.pricing-list { list-style:none; margin-bottom:2rem; }
+.pricing-list li {
+  font-size:.82rem; color:var(--text-dim); padding:.5rem 0;
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:.6rem;
+}
+.pricing-list li:last-child { border:none; }
+.pricing-list li i { color:var(--primary); font-size:.75rem; }
+.pricing-list li.off { opacity:.4; text-decoration:line-through; }
+.pricing-list li.off i { color:var(--text-dim); }
+.btn-pricing {
+  width:100%; padding:.85rem; border-radius:12px; font-weight:700;
+  font-size:.82rem; letter-spacing:.06em; text-transform:uppercase;
+  cursor:pointer; text-decoration:none; display:block; text-align:center;
+  transition:transform .2s, box-shadow .2s;
+}
+.btn-pricing.solid {
+  background:var(--primary); color:#000;
+  box-shadow:0 6px 24px var(--primary-glow);
+  border:none;
+}
+.btn-pricing.solid:hover { transform:translateY(-2px); box-shadow:0 12px 32px var(--primary-glow); }
+.btn-pricing.outline { background:transparent; color:var(--text); border:1px solid var(--border); }
+.btn-pricing.outline:hover { border-color:var(--primary); color:var(--primary); }
+
+/* ── REVIEWS ── */
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:4rem; }
+.review-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:20px; padding:1.8rem;
+  border-bottom:3px solid var(--primary);
+}
+.stars { color:#f1c40f; font-size:1rem; margin-bottom:1rem; }
+.review-card p { color:var(--text-dim); font-size:.85rem; line-height:1.7; font-style:italic; margin-bottom:1.2rem; }
+.reviewer strong { font-size:.85rem; color:var(--primary); display:block; }
+.reviewer small { font-size:.75rem; color:var(--text-dim); }
+
+/* ── CONTACT FORM ── */
+#contato { background:var(--surface); }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; margin-top:4rem; }
+.contact-info h2 { font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:800; letter-spacing:-1px; margin-bottom:1rem; }
+.contact-info p { color:var(--text-dim); font-size:.9rem; line-height:1.7; margin-bottom:2rem; }
+.contact-item {
+  display:flex; align-items:center; gap:1rem;
+  padding:1rem; border:1px solid var(--border); border-radius:14px;
+  margin-bottom:.8rem; transition:border-color .2s;
+}
+.contact-item:hover { border-color:var(--border-green); }
+.contact-item i { color:var(--primary); font-size:1.1rem; width:20px; text-align:center; }
+.contact-item span { font-size:.85rem; color:var(--text-dim); }
+
+.form-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:24px; padding:2.5rem;
+}
+.form-group { margin-bottom:1.2rem; }
+.form-group label { display:block; font-size:.75rem; color:var(--text-dim); letter-spacing:.08em; text-transform:uppercase; margin-bottom:.5rem; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%; background:rgba(255,255,255,.04);
+  border:1px solid var(--border); border-radius:12px;
+  padding:.85rem 1rem; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.88rem; outline:none; transition:border-color .2s;
+  resize:vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color:var(--primary); }
+.form-group select option { background:var(--bg); }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.form-submit {
+  width:100%; padding:1rem; border-radius:12px;
+  background:var(--primary); color:#000; border:none;
+  font-weight:800; font-size:.9rem; letter-spacing:.08em; text-transform:uppercase;
+  cursor:pointer; transition:transform .2s, box-shadow .2s;
+  box-shadow:0 6px 24px var(--primary-glow);
+  margin-top:.5rem;
+}
+.form-submit:hover { transform:translateY(-2px); box-shadow:0 12px 32px var(--primary-glow); }
+.form-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+.form-success {
+  display:none; text-align:center; padding:2rem;
+  color:var(--primary); font-size:1rem; font-weight:700;
+}
+
+/* ── WHATSAPP FLOAT ── */
+.wa-container {
+  position:fixed; bottom:30px; right:28px; z-index:1500;
+  display:flex; flex-direction:column; align-items:flex-end; gap:.8rem;
+}
+.wa-bubble {
+  background:var(--surface); border:1px solid var(--border-green);
+  border-radius:16px 16px 4px 16px; padding:.7rem 1rem;
+  font-size:.78rem; color:var(--text-dim); white-space:nowrap;
+  opacity:0; transform:translateX(10px) scale(.95);
+  animation: waBubble 4s 2s ease forwards;
+  pointer-events:none;
+}
+.wa-btn {
+  width:60px; height:60px; border-radius:50%;
+  background:var(--wa); color:#fff; font-size:1.6rem;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; box-shadow:0 6px 24px rgba(37,211,102,.4);
+  transition:transform .2s, box-shadow .2s;
+  position:relative;
+}
+.wa-btn:hover { transform:scale(1.1); box-shadow:0 10px 32px rgba(37,211,102,.5); }
+.wa-pulse {
+  position:absolute; inset:0; border-radius:50%;
+  background:rgba(37,211,102,.35); animation:waPulse 2s infinite;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding:4rem 6% 2rem;
+  border-top:1px solid var(--border);
+}
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+.footer-brand .logo { font-size:1.4rem; display:inline-block; margin-bottom:1rem; }
+.footer-brand p { color:var(--text-dim); font-size:.83rem; line-height:1.7; max-width:280px; }
+.footer-col h4 { font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--text-dim); margin-bottom:1rem; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+.footer-col ul a { color:var(--text-dim); text-decoration:none; font-size:.83rem; transition:color .2s; }
+.footer-col ul a:hover { color:var(--primary); }
+.footer-bottom {
+  border-top:1px solid var(--border); padding-top:2rem;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+}
+.footer-bottom p { color:var(--text-dim); font-size:.78rem; }
+.footer-bottom span { color:var(--primary); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:.5; transform:scale(1.3); }
+}
+@keyframes waPulse {
+  0%   { transform:scale(1); opacity:.7; }
+  100% { transform:scale(1.8); opacity:0; }
+}
+@keyframes waBubble {
+  0%   { opacity:0; transform:translateX(10px) scale(.95); }
+  15%  { opacity:1; transform:translateX(0) scale(1); }
+  80%  { opacity:1; transform:translateX(0) scale(1); }
+  100% { opacity:0; transform:translateX(10px) scale(.95); }
+}
+
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:.1s; }
+.reveal-delay-2 { transition-delay:.2s; }
+.reveal-delay-3 { transition-delay:.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-desktop { display:none; }
+  .hamburger { display:flex; }
+  header { padding:18px 5%; }
+  section { padding:70px 5%; }
+  .ia-banner-grid { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; gap:3rem; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .footer-brand { grid-column:span 2; }
+  .form-row { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+  .hero h1 { letter-spacing:-2px; }
+  .hero-stats { gap:2rem; }
+  .ia-mini-cards { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+  .footer-brand { grid-column:auto; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+}
+</style>
 </head>
 <body>
 
-<div class="bg-ornament" style="top: -10%; right: -5%;"></div>
-<div class="bg-ornament" style="bottom: -10%; left: -5%;"></div>
-
-<header>
-    <div class="logo">VANTIX_</div>
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="logo">VANTIX_</a>
+  <ul class="nav-desktop">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#precos">Planos</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
-<button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#servicos" class="nav-link-m">Serviços</a>
+  <a href="#portfolio" class="nav-link-m">Portfólio</a>
+  <a href="#precos" class="nav-link-m">Planos</a>
+  <a href="#avaliacoes" class="nav-link-m">Avaliações</a>
+  <a href="#contato" class="nav-link-m">Contato</a>
+</nav>
 
-<div class="sidebar" id="sidebar">
-    <a href="#" onclick="toggleMenu()">Início</a>
-    <a href="#servicos" onclick="toggleMenu()">Serviços</a>
-    <a href="#portfolio" onclick="toggleMenu()">Portfólio</a>
-    <a href="#avaliacoes" onclick="toggleMenu()">Avaliações</a>
-    <div style="margin-top: 50px; display: flex; gap: 20px;">
-        <a href="https://wa.me/5511913306933"><i class="fab fa-whatsapp"></i></a>
-    </div>
-</div>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="bg-orb" style="width:700px;height:700px;top:-15%;right:-10%;"></div>
+  <div class="bg-orb" style="width:400px;height:400px;bottom:-10%;left:-5%;"></div>
+  <div class="hero-grid"></div>
 
-<section class="hero">
-    <h1 data-aos="fade-up">VANTIX<span>SOLUTIONS</span></h1>
-    <p data-aos="fade-up" data-aos-delay="200">Não vendemos sites. Entregamos autoridade digital e automação de lucros.</p>
-    <a href="#servicos" class="btn-elite">NOSSAS SOLUÇÕES</a>
+  <div class="hero-badge"><span></span> Vagas abertas para novos projetos</div>
+  <h1>VANTIX<span class="dim">SOLUTIONS</span></h1>
+  <p>Não vendemos sites. Entregamos <strong style="color:var(--primary)">autoridade digital</strong> e automação de lucros com IA.</p>
+  <div class="hero-cta">
+    <a href="#contato" class="btn-primary">Falar com especialista</a>
+    <a href="#servicos" class="btn-ghost">Ver soluções</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><strong>47+</strong><span>Projetos entregues</span></div>
+    <div class="stat"><strong>3x</strong><span>Média de ROI</span></div>
+    <div class="stat"><strong>24/7</strong><span>IA ativa</span></div>
+    <div class="stat"><strong>98%</strong><span>Satisfação</span></div>
+  </div>
 </section>
 
-<section class="section" id="servicos">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Ecossistema de Elite</h2>
-    <div class="grid">
-        <div class="service-card" data-aos="fade-up">
-            <i class="fas fa-bolt"></i>
-            <h3>Landing Pages High-Ticket</h3>
-            <p>Páginas de alta conversão focadas em produtos e serviços de luxo. Design que transparece autoridade instantânea.</p>
-            <ul>
-                <li>Copywriting persuasivo</li>
-                <li>Carregamento ultra-rápido</li>
-                <li>Otimização para Mobile</li>
-            </ul>
-        </div>
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <p class="section-tag reveal">Soluções</p>
+  <h2 class="section-title reveal">Ecossistema<br/>de Elite</h2>
+  <p class="section-sub reveal">Cada solução foi desenhada para maximizar autoridade, conversão e lucro — do zero ao scale.</p>
 
-        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <i class="fas fa-shopping-bag"></i>
-            <h3>E-commerce de Luxo</h3>
-            <p>Lojas virtuais com experiência de compra cinematográfica. Sistemas robustos e checkout otimizado.</p>
-            <ul>
-                <li>Gestão de estoque inteligente</li>
-                <li>Pagamento em 1 clique</li>
-                <li>Painel administrativo intuitivo</li>
-            </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-            <i class="fas fa-robot"></i>
-            <h3>Sistemas de Automação IA</h3>
-            <p>Integramos robôs inteligentes no seu fluxo de trabalho para economizar tempo e aumentar as vendas.</p>
-            <ul>
-                <li>Triagem automática de leads</li>
-                <li>Agendamentos sem humano</li>
-                <li>Fidelização pós-venda</li>
-            </ul>
-        </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon"><i class="fas fa-globe"></i></div>
+      <h3>Criação de Sites & Apps</h3>
+      <p>Do site institucional ao app completo. Projetos modernos, rápidos e prontos para escalar o seu negócio.</p>
+      <ul>
+        <li>Site Básico — R$ 199,00</li>
+        <li>Site Pro (login, pagamento, BD) — R$ 399,99</li>
+        <li>Aplicativo mobile — R$ 499,99</li>
+        <li>Design responsivo incluso</li>
+      </ul>
     </div>
-
-    <div class="ia-highlight" data-aos="zoom-in">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 style="color: var(--primary); margin-bottom: 20px;">Por que ter um Robô 24h no WhatsApp?</h2>
-            <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 30px;">
-                O cliente moderno não espera. Se ele mandar mensagem às 2h da manhã e você não responder, ele vai para o concorrente. 
-                Nossa IA atende, qualifica e fecha vendas enquanto você dorme.
-            </p>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
-                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;">
-                    <h4 style="color: var(--primary);">Atendimento Imediato</h4>
-                    <p style="font-size: 0.8rem; opacity: 0.7;">Redução de 100% no tempo de espera do cliente.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;">
-                    <h4 style="color: var(--primary);">Filtro de Leads</h4>
-                    <p style="font-size: 0.8rem; opacity: 0.7;">O robô identifica quem é curioso e quem é comprador real.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;">
-                    <h4 style="color: var(--primary);">Escalabilidade</h4>
-                    <p style="font-size: 0.8rem; opacity: 0.7;">Atenda 1.000 pessoas ao mesmo tempo com a mesma qualidade.</p>
-                </div>
-            </div>
-            <a href="https://wa.me/5511913306933" class="btn-elite" style="margin-top: 40px;">QUERO MINHA IA AGORA</a>
-        </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+      <h3>Design Gráfico</h3>
+      <p>Identidade visual, logos, posts e materiais que posicionam sua marca acima da concorrência.</p>
+      <ul>
+        <li>Logo e identidade visual</li>
+        <li>Posts para redes sociais</li>
+        <li>Materiais impressos</li>
+        <li>A partir de R$ 49,99</li>
+      </ul>
     </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon"><i class="fas fa-photo-film"></i></div>
+      <h3>Edição de Foto & Vídeo</h3>
+      <p>Conteúdo visual profissional que prende atenção e converte nas redes sociais e campanhas digitais.</p>
+      <ul>
+        <li>1 foto — R$ 5,00</li>
+        <li>Pacote 5 fotos — R$ 20,00</li>
+        <li>Vídeo até 5 min — R$ 35,00</li>
+        <li>+R$ 5,00 por minuto extra acima de 5 min</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ia-banner reveal">
+    <div class="ia-banner-grid">
+      <div>
+        <p class="section-tag">IA & WhatsApp</p>
+        <h2 class="section-title">Por que ter um<br/>robô 24h?</h2>
+        <p class="section-sub" style="margin-bottom:2rem;">O cliente moderno não espera. Se ele mandar mensagem às 2h da manhã e você não responder, ele vai para o concorrente. Nossa IA atende, qualifica e fecha vendas enquanto você dorme.</p>
+        <a href="https://wa.me/5511913306933" class="btn-primary">Quero minha IA agora →</a>
+      </div>
+      <div class="ia-mini-cards">
+        <div class="ia-mini">
+          <h4>Atendimento Imediato</h4>
+          <p>Redução de 100% no tempo de espera. Resposta em segundos.</p>
+        </div>
+        <div class="ia-mini">
+          <h4>Filtro de Leads</h4>
+          <p>A IA identifica quem é curioso e quem é comprador real.</p>
+        </div>
+        <div class="ia-mini">
+          <h4>Escalabilidade</h4>
+          <p>Atenda 1.000 pessoas ao mesmo tempo com a mesma qualidade.</p>
+        </div>
+        <div class="ia-mini">
+          <h4>Dados & Insights</h4>
+          <p>Dashboard com métricas de conversão e comportamento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="portfolio">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Cases de Sucesso</h2>
-    <div class="grid">
-        <div class="service-card" style="padding:0; overflow:hidden;" data-aos="fade-up">
-            <div style="height:200px; background:#111; display:flex; align-items:center; justify-content:center;"><i class="fas fa-gem" style="opacity:0.2;"></i></div>
-            <div style="padding:25px;"><h3>Vantix Jewelers</h3><p style="font-size:0.8rem;">E-commerce de alto padrão com IA integrada.</p></div>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <p class="section-tag reveal">Cases</p>
+  <h2 class="section-title reveal">Projetos que<br/>geram resultado</h2>
+  <p class="section-sub reveal">Cada entrega é pensada para impactar o negócio do cliente de forma real e mensurável.</p>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal reveal-delay-1">
+      <div class="portfolio-img">
+        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80" alt="E-commerce de joias">
+        <div class="portfolio-overlay">
+          <a href="https://wa.me/5511913306933">Ver projeto <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="service-card" style="padding:0; overflow:hidden;" data-aos="fade-up" data-aos-delay="100">
-            <div style="height:200px; background:#111; display:flex; align-items:center; justify-content:center;"><i class="fas fa-handshake" style="opacity:0.2;"></i></div>
-            <div style="padding:25px;"><h3>Prime Consultoria</h3><p style="font-size:0.8rem;">Lading Page com automação de agendamentos.</p></div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Vantix Jewelers</h3>
+        <p>E-commerce de alto padrão com IA integrada para recomendação de produtos.</p>
+        <div class="portfolio-tags">
+          <span class="ptag">E-commerce</span>
+          <span class="ptag">IA</span>
+          <span class="ptag">Luxo</span>
         </div>
+      </div>
     </div>
+    <div class="portfolio-card reveal reveal-delay-2">
+      <div class="portfolio-img">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Consultoria Prime">
+        <div class="portfolio-overlay">
+          <a href="https://wa.me/5511913306933">Ver projeto <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Prime Consultoria</h3>
+        <p>Landing page com automação de agendamentos e qualificação de leads por IA.</p>
+        <div class="portfolio-tags">
+          <span class="ptag">Landing Page</span>
+          <span class="ptag">Automação</span>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-delay-3">
+      <div class="portfolio-img">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Restaurante Gourmet">
+        <div class="portfolio-overlay">
+          <a href="https://wa.me/5511913306933">Ver projeto <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Gourmet Reservas</h3>
+        <p>Sistema de reservas inteligente com atendimento automatizado via WhatsApp.</p>
+        <div class="portfolio-tags">
+          <span class="ptag">WhatsApp IA</span>
+          <span class="ptag">Reservas</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="avaliacoes">
-    <h2 style="text-align: center; margin-bottom: 50px;">Feedback de Autoridade</h2>
-    <div class="grid" id="reviews-container">
-        <div class="service-card" style="text-align: center; border-bottom: 4px solid var(--primary);">
-            <div style="color: #f1c40f; margin-bottom: 15px;">⭐⭐⭐⭐⭐</div>
-            <p>"O robô de WhatsApp que a Vantix instalou dobrou nosso fechamento de vendas em um mês."</p>
-            <h5 style="margin-top:20px; color:var(--primary);">Daniel Novaes</h5>
-            <small>CEO - Vantix Solutions</small>
-        </div>
+<!-- PREÇOS -->
+<section id="precos">
+  <p class="section-tag reveal">Investimento</p>
+  <h2 class="section-title reveal">Planos que<br/>cabem no seu negócio</h2>
+  <p class="section-sub reveal">Transparência total. Sem taxas escondidas, sem surpresas.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card reveal reveal-delay-1">
+      <h3>Site Básico</h3>
+      <div class="pricing-price">R$199<small>,00</small></div>
+      <p class="pricing-desc">Ideal para quem quer presença digital profissional e rápida.</p>
+      <ul class="pricing-list">
+        <li><i class="fas fa-check"></i> Design moderno e responsivo</li>
+        <li><i class="fas fa-check"></i> Formulário de contato</li>
+        <li><i class="fas fa-check"></i> SEO básico incluso</li>
+        <li><i class="fas fa-check"></i> Entrega rápida</li>
+        <li class="off"><i class="fas fa-times"></i> Sistema de login</li>
+        <li class="off"><i class="fas fa-times"></i> Pagamentos online</li>
+        <li class="off"><i class="fas fa-times"></i> Banco de dados</li>
+      </ul>
+      <a href="https://wa.me/5511913306933" class="btn-pricing outline">Quero o Básico</a>
     </div>
 
-    <div class="glass-card" style="max-width: 600px; margin: 60px auto 0; border: 1px dashed var(--primary);">
-        <h3 style="text-align: center; margin-bottom: 30px;">Avalie sua Experiência</h3>
-        <form id="review-form">
-            <input type="text" name="Nome" id="rev-name" placeholder="Seu Nome" required>
-            <input type="email" name="Email" id="rev-email" placeholder="Seu E-mail" required>
-            <select name="Nota" id="rev-stars" required>
-                <option value="5">⭐⭐⭐⭐⭐ (5 Estrelas)</option>
-                <option value="4">⭐⭐⭐⭐ (4 Estrelas)</option>
-                <option value="3">⭐⭐⭐ (3 Estrelas)</option>
+    <div class="pricing-card featured reveal reveal-delay-2">
+      <div class="pricing-badge">Mais completo</div>
+      <h3>Site Pro</h3>
+      <div class="pricing-price">R$399<small>,99</small></div>
+      <p class="pricing-desc">Para negócios que precisam de uma plataforma completa e robusta.</p>
+      <ul class="pricing-list">
+        <li><i class="fas fa-check"></i> Tudo do plano Básico</li>
+        <li><i class="fas fa-check"></i> Sistema de login de usuários</li>
+        <li><i class="fas fa-check"></i> Pagamentos online integrados</li>
+        <li><i class="fas fa-check"></i> Banco de dados completo</li>
+        <li><i class="fas fa-check"></i> Painel administrativo</li>
+        <li><i class="fas fa-check"></i> Suporte pós-entrega</li>
+      </ul>
+      <a href="https://wa.me/5511913306933" class="btn-pricing solid">Quero o Pro</a>
+    </div>
+
+    <div class="pricing-card reveal reveal-delay-3">
+      <h3>Aplicativo</h3>
+      <div class="pricing-price">R$499<small>,99</small></div>
+      <p class="pricing-desc">App mobile completo para Android e iOS, do zero ao deploy.</p>
+      <ul class="pricing-list">
+        <li><i class="fas fa-check"></i> Design de interface (UI/UX)</li>
+        <li><i class="fas fa-check"></i> Login e autenticação</li>
+        <li><i class="fas fa-check"></i> Banco de dados integrado</li>
+        <li><i class="fas fa-check"></i> Publicação nas lojas</li>
+        <li><i class="fas fa-check"></i> Notificações push</li>
+        <li><i class="fas fa-check"></i> Suporte técnico</li>
+      </ul>
+      <a href="https://wa.me/5511913306933" class="btn-pricing outline">Falar sobre App</a>
+    </div>
+  </div>
+
+  <!-- Outros serviços -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;text-align:center;">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">🤖</div>
+      <h4 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem;">Robô WhatsApp</h4>
+      <p style="color:var(--primary);font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;">R$ 199,99</p>
+      <p style="color:var(--text-dim);font-size:.75rem;margin-top:.3rem;">atendimento 24/7 com IA</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;text-align:center;">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">🎨</div>
+      <h4 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem;">Design Gráfico</h4>
+      <p style="color:var(--primary);font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;">R$ 49,99</p>
+      <p style="color:var(--text-dim);font-size:.75rem;margin-top:.3rem;">por peça</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;text-align:center;">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">📸</div>
+      <h4 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem;">Edição de Foto</h4>
+      <p style="color:var(--primary);font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;">R$ 5,00</p>
+      <p style="color:var(--text-dim);font-size:.75rem;margin-top:.3rem;">por foto · pacote 5 por R$20</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;text-align:center;">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">🎬</div>
+      <h4 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem;">Edição de Vídeo</h4>
+      <p style="color:var(--primary);font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;">R$ 35,00</p>
+      <p style="color:var(--text-dim);font-size:.75rem;margin-top:.3rem;">até 5 min · +R$5/min extra</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section id="avaliacoes">
+  <p class="section-tag reveal">Depoimentos</p>
+  <h2 class="section-title reveal">Feedback de<br/>autoridade</h2>
+
+  <div class="reviews-grid" id="reviews-container">
+    <div class="review-card reveal reveal-delay-1">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"O robô de WhatsApp que a Vantix instalou dobrou nosso fechamento de vendas em apenas um mês. Resultado incrível."</p>
+      <div class="reviewer"><strong>Daniel Novaes</strong><small>CEO — Vantix Solutions</small></div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Entregaram muito além do esperado. O site ficou com uma cara premium e as conversões aumentaram 180% no primeiro mês."</p>
+      <div class="reviewer"><strong>Carla Mendes</strong><small>Fundadora — Prime Consultoria</small></div>
+    </div>
+    <div class="review-card reveal reveal-delay-3">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"A automação de reservas via WhatsApp transformou minha operação. Economizo horas por dia e perco zero cliente."</p>
+      <div class="reviewer"><strong>Rafael Costa</strong><small>Proprietário — Gourmet Reservas</small></div>
+    </div>
+  </div>
+
+  <!-- Formulário de avaliação -->
+  <div style="max-width:580px; margin:0 auto;">
+    <div class="form-card reveal">
+      <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;">Deixe sua avaliação</h3>
+      <form id="review-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Seu nome</label>
+            <input type="text" id="rev-name" placeholder="João Silva" required>
+          </div>
+          <div class="form-group">
+            <label>Nota</label>
+            <select id="rev-stars">
+              <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+              <option value="4">⭐⭐⭐⭐ Muito bom</option>
+              <option value="3">⭐⭐⭐ Bom</option>
             </select>
-            <textarea name="Mensagem" id="rev-text" placeholder="Escreva aqui..." rows="4" required></textarea>
-            <button type="submit" class="btn-elite" style="width:100%;">ENVIAR AVALIAÇÃO</button>
-        </form>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Cargo / Empresa</label>
+          <input type="text" id="rev-role" placeholder="CEO — Minha Empresa">
+        </div>
+        <div class="form-group">
+          <label>Depoimento</label>
+          <textarea id="rev-text" rows="3" placeholder="Conte sua experiência com a Vantix..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar avaliação</button>
+      </form>
     </div>
+  </div>
 </section>
 
-<footer style="padding: 60px 8%; text-align: center; border-top: 1px solid var(--border);">
-    <div class="logo">VANTIX_</div>
-    <p style="color: var(--text-dim); margin-top: 10px;">novaesdanniel0802@gmail.com</p>
+<!-- CONTATO -->
+<section id="contato">
+  <p class="section-tag reveal">Contato</p>
+  <h2 class="section-title reveal">Vamos construir<br/>algo incrível?</h2>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info reveal">
+        <p>Preencha o formulário ou fale diretamente pelo WhatsApp. Nossa equipe responde em até 2 horas úteis.</p>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <span>+55 (11) 91330-6933</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>novaesdanniel0802@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Seg–Sex: 9h às 18h (IA: 24/7)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card reveal reveal-delay-1">
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome completo</label>
+            <input type="text" name="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" name="whatsapp" placeholder="(11) 99999-9999" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" name="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Serviço de interesse</label>
+          <select name="servico">
+            <option value="">Selecione...</option>
+            <option>Site Básico — R$ 199,00</option>
+            <option>Site Pro — R$ 399,99</option>
+            <option>Aplicativo — R$ 499,99</option>
+            <option>Robô WhatsApp — R$ 199,99</option>
+            <option>Design Gráfico — R$ 49,99</option>
+            <option>Edição de Foto</option>
+            <option>Edição de Vídeo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea name="mensagem" rows="4" placeholder="Conte um pouco sobre seu projeto..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="contact-submit">Enviar mensagem</button>
+        <div class="form-success" id="contact-success">
+          <i class="fas fa-check-circle" style="font-size:2rem;display:block;margin-bottom:.5rem;"></i>
+          Mensagem enviada! Entraremos em contato em breve.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">VANTIX_</a>
+      <p>Transformamos negócios com design de alto padrão, automação inteligente e estratégia digital orientada a resultados.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#precos">Planos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5511913306933">WhatsApp</a></li>
+        <li><a href="mailto:novaesdanniel0802@gmail.com">E-mail</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Vantix Solutions</span>. Todos os direitos reservados.</p>
+    <p>Feito com <span>♥</span> e muito café</p>
+  </div>
 </footer>
 
-<a href="https://wa.me/5511913306933" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<!-- WA FLOAT -->
+<div class="wa-container">
+  <div class="wa-bubble">Olá! Como posso ajudar? 👋</div>
+  <a href="https://wa.me/5511913306933" class="wa-btn" target="_blank" aria-label="WhatsApp">
+    <div class="wa-pulse"></div>
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init();
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
+// ── HEADER SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+});
 
-    const FORMSPREE_URL = "https://formspree.io/f/seu_codigo_aqui";
+// ── HAMBURGER ──
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+document.querySelectorAll('.nav-link-m').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  });
+});
 
-    document.getElementById('review-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const container = document.getElementById('reviews-container');
-        const name = document.getElementById('rev-name').value;
-        const text = document.getElementById('rev-text').value;
-        const starsValue = document.getElementById('rev-stars').value;
+// ── REVEAL ON SCROLL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        let starRating = "⭐".repeat(starsValue);
-        const div = document.createElement('div');
-        div.className = 'service-card';
-        div.style.textAlign = 'center';
-        div.style.borderBottom = '4px solid var(--primary)';
-        div.innerHTML = `<div style="color:#f1c40f; margin-bottom:15px;">${starRating}</div><p>"${text}"</p><h5 style="margin-top:20px; color:var(--primary);">${name}</h5><small>Cliente Verificado</small>`;
-        container.prepend(div);
+// ── REVIEW FORM ──
+document.getElementById('review-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name  = document.getElementById('rev-name').value.trim();
+  const text  = document.getElementById('rev-text').value.trim();
+  const role  = document.getElementById('rev-role').value.trim();
+  const stars = '⭐'.repeat(document.getElementById('rev-stars').value);
+  if (!name || !text) return;
 
-        fetch(FORMSPREE_URL, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
-        }).then(() => {
-            alert('Avaliação enviada com sucesso!');
-            this.reset();
-        });
-    });
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'all .5s ease';
+  card.innerHTML = `
+    <div class="stars">${stars}</div>
+    <p>"${text}"</p>
+    <div class="reviewer"><strong>${name}</strong><small>${role || 'Cliente verificado'}</small></div>
+  `;
+  document.getElementById('reviews-container').prepend(card);
+  requestAnimationFrame(() => {
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+  });
+  this.reset();
+});
+
+// ── CONTACT FORM (Formspree) ──
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contact-submit');
+  const success = document.getElementById('contact-success');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  // Redireciona para WhatsApp como fallback (sem chave Formspree configurada)
+  const nome     = this.querySelector('[name="nome"]').value;
+  const servico  = this.querySelector('[name="servico"]').value;
+  const mensagem = this.querySelector('[name="mensagem"]').value;
+  const msg = encodeURIComponent(`Olá! Me chamo ${nome}. Tenho interesse em: ${servico || 'Geral'}.\n\n${mensagem}`);
+  
+  // Simula envio e abre WhatsApp
+  setTimeout(() => {
+    success.style.display = 'block';
+    this.querySelector('button').style.display = 'none';
+    setTimeout(() => { window.open(`https://wa.me/5511913306933?text=${msg}`, '_blank'); }, 800);
+  }, 900);
+});
 </script>
 </body>
 </html>
