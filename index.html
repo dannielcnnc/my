@@ -434,7 +434,29 @@ footer {
 .footer-bottom p { color:var(--text-dim); font-size:.78rem; }
 .footer-bottom span { color:var(--primary); }
 
-/* ── ANIMATIONS ── */
+/* ── WA BIG BUTTON ── */
+.btn-wa-big {
+  display:inline-flex; align-items:center; gap:.8rem;
+  background:var(--wa); color:#fff;
+  padding:1rem 2rem; border-radius:14px; font-weight:800;
+  font-size:.95rem; text-decoration:none; margin-top:1.5rem;
+  box-shadow:0 8px 30px rgba(37,211,102,.4);
+  transition:transform .2s, box-shadow .2s;
+}
+.btn-wa-big:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(37,211,102,.5); }
+.btn-wa-big i { font-size:1.3rem; }
+
+/* ── PORTFOLIO PLACEHOLDER ── */
+.portfolio-placeholder {
+  width:100%; aspect-ratio:16/10;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.portfolio-placeholder span {
+  font-size:3rem; z-index:1;
+}
+
+
 @keyframes fadeDown {
   from { opacity:0; transform:translateY(-20px); }
   to   { opacity:1; transform:translateY(0); }
@@ -466,20 +488,30 @@ footer {
   .hamburger { display:flex; }
   header { padding:18px 5%; }
   section { padding:70px 5%; }
-  .ia-banner-grid { grid-template-columns:1fr; }
+  .ia-banner-grid { grid-template-columns:1fr; gap:2rem; }
   .contact-grid { grid-template-columns:1fr; gap:3rem; }
   .footer-grid { grid-template-columns:1fr 1fr; }
   .footer-brand { grid-column:span 2; }
   .form-row { grid-template-columns:1fr; }
+  .portfolio-grid { grid-template-columns:1fr; }
+  .services-grid { grid-template-columns:1fr; }
+  .pricing-grid { grid-template-columns:1fr; }
+  .reviews-grid { grid-template-columns:1fr; }
 }
 @media (max-width:600px) {
-  .hero h1 { letter-spacing:-2px; }
-  .hero-stats { gap:2rem; }
+  .hero h1 { letter-spacing:-2px; font-size:clamp(2.8rem,14vw,5rem); }
+  .hero-stats { gap:1.5rem; }
   .ia-mini-cards { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr; }
   .footer-brand { grid-column:auto; }
   .footer-bottom { flex-direction:column; text-align:center; }
+  .hero-cta { flex-direction:column; align-items:center; }
+  .hero-cta a { width:100%; max-width:280px; text-align:center; }
+  .ia-banner { padding:2rem 1.5rem; }
 }
+html, body { max-width:100%; overflow-x:hidden; }
+img { max-width:100%; height:auto; }
+* { min-width:0; }
 </style>
 </head>
 <body>
@@ -609,8 +641,8 @@ footer {
 
   <div class="portfolio-grid">
     <div class="portfolio-card reveal reveal-delay-1">
-      <div class="portfolio-img">
-        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80" alt="E-commerce de joias">
+      <div class="portfolio-img" style="position:relative;">
+        <img src="https://picsum.photos/seed/ecommerce/600/375" alt="E-commerce" style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="portfolio-overlay">
           <a href="https://wa.me/5511913306933">Ver projeto <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -626,8 +658,8 @@ footer {
       </div>
     </div>
     <div class="portfolio-card reveal reveal-delay-2">
-      <div class="portfolio-img">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Consultoria Prime">
+      <div class="portfolio-img" style="position:relative;">
+        <img src="https://picsum.photos/seed/consultoria/600/375" alt="Consultoria" style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="portfolio-overlay">
           <a href="https://wa.me/5511913306933">Ver projeto <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -642,8 +674,8 @@ footer {
       </div>
     </div>
     <div class="portfolio-card reveal reveal-delay-3">
-      <div class="portfolio-img">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Restaurante Gourmet">
+      <div class="portfolio-img" style="position:relative;">
+        <img src="https://picsum.photos/seed/restaurante/600/375" alt="Restaurante" style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="portfolio-overlay">
           <a href="https://wa.me/5511913306933">Ver projeto <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -818,9 +850,16 @@ footer {
           <span>novaesdanniel0802@gmail.com</span>
         </div>
         <div class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <a href="https://www.instagram.com/sedwebsites" target="_blank" style="color:var(--text-dim);text-decoration:none;">@sedwebsites</a>
+        </div>
+        <div class="contact-item">
           <i class="fas fa-clock"></i>
           <span>Seg–Sex: 9h às 18h (IA: 24/7)</span>
         </div>
+        <a href="https://wa.me/5511913306933?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20serviços." target="_blank" class="btn-wa-big">
+          <i class="fab fa-whatsapp"></i> Falar agora no WhatsApp
+        </a>
       </div>
     </div>
 
@@ -888,6 +927,7 @@ footer {
       <ul>
         <li><a href="https://wa.me/5511913306933">WhatsApp</a></li>
         <li><a href="mailto:novaesdanniel0802@gmail.com">E-mail</a></li>
+        <li><a href="https://www.instagram.com/sedwebsites" target="_blank">Instagram</a></li>
       </ul>
     </div>
   </div>
@@ -959,7 +999,7 @@ document.getElementById('review-form').addEventListener('submit', function(e) {
   this.reset();
 });
 
-// ── CONTACT FORM (Formspree) ──
+// ── CONTACT FORM → EMAIL + WHATSAPP ──
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('contact-submit');
@@ -967,19 +1007,23 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   btn.disabled = true;
   btn.textContent = 'Enviando...';
 
-  // Redireciona para WhatsApp como fallback (sem chave Formspree configurada)
   const nome     = this.querySelector('[name="nome"]').value;
+  const email    = this.querySelector('[name="email"]').value;
+  const whatsapp = this.querySelector('[name="whatsapp"]').value;
   const servico  = this.querySelector('[name="servico"]').value;
   const mensagem = this.querySelector('[name="mensagem"]').value;
-  const msg = encodeURIComponent(`Olá! Me chamo ${nome}. Tenho interesse em: ${servico || 'Geral'}.\n\n${mensagem}`);
-  
-  // Simula envio e abre WhatsApp
+
+  // Abre cliente de email com os dados preenchidos
+  const subject = encodeURIComponent(`[Vantix] Novo contato: ${servico || 'Geral'}`);
+  const body = encodeURIComponent(
+    `Nome: ${nome}\nE-mail: ${email}\nWhatsApp: ${whatsapp}\nServiço: ${servico || 'Não informado'}\n\nMensagem:\n${mensagem}`
+  );
+  window.location.href = `mailto:novaesdanniel0802@gmail.com?subject=${subject}&body=${body}`;
+
   setTimeout(() => {
     success.style.display = 'block';
-    this.querySelector('button').style.display = 'none';
-    setTimeout(() => { window.open(`https://wa.me/5511913306933?text=${msg}`, '_blank'); }, 800);
-  }, 900);
+    btn.style.display = 'none';
+  }, 500);
 });
 </script>
 </body>
-</html>
